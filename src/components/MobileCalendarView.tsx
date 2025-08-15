@@ -526,7 +526,6 @@ const MobileCalendarView: React.FC<MobileCalendarViewProps> = ({
                 return '';
               })()}
               {canDrag && <span className="text-xs ml-1">📱</span>}
-              {isMissedSession && <span className="text-xs ml-1">🚫</span>}
             </div>
             <div className="text-xs opacity-90">
               {moment(event.start).format('h:mm A')} - {moment(event.end).format('h:mm A')}
