@@ -2326,7 +2326,7 @@ function App() {
 
                                         <details className="group border border-gray-200 dark:border-gray-700 rounded-lg">
                                             <summary className="flex items-center justify-between cursor-pointer p-4 text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-100">
-                                                <span>What happens with missed and rescheduled sessions?</span>
+                                                <span>How does session rescheduling work?</span>
                                                 <svg className="w-4 h-4 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                                 </svg>
