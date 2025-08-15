@@ -1759,9 +1759,6 @@ function App() {
     }, [showInteractiveTutorial]);
 
 
-    // Handle missed sessions and provide rescheduling options
-    // Removed handleMissedSessions, handleIndividualSessionReschedule, and any effect or function using checkSessionStatus, moveMissedSessions, moveIndividualSession, applyUserReschedules, createUserReschedule, or UserReschedule
-    // Removed onHandleMissedSessions and readyToMarkDone props from Dashboard and StudyPlanView
 
     const tabs = [
         { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
