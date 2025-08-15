@@ -923,8 +923,8 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
             </button>
           </div>
 
-          {/* Missed Sessions Section - Integrated */}
-          {(missedSessions.length > 0 || overdueMissedSessions.length > 0) && (
+          {/* Missed Sessions feature removed - forward focus approach: past sessions are ignored */}
+          {false && (
             <div className="border-t pt-4 mt-4 dark:border-gray-700">
               <div className="flex items-center justify-between mb-4">
                 <button
