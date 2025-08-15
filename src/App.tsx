@@ -2334,15 +2334,6 @@ function App() {
                                             <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
                                                 <div className="text-sm text-gray-600 dark:text-gray-400 space-y-3">
                                                     <div>
-                                                        <strong className="text-red-600 dark:text-red-400">Missed Sessions:</strong>
-                                                        <ul className="ml-4 mt-1 space-y-1">
-                                                            <li> Automatically marked as "missed" when the scheduled time passes</li>
-                                                            <li> Hours are automatically redistributed to future available time slots</li>
-                                                            <li> TimePilot tries to maintain deadline compliance when redistributing</li>
-                                                            <li> You can manually mark a session as completed if you studied at a different time</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div>
                                                         <strong className="text-blue-600 dark:text-blue-400">Rescheduled Sessions:</strong>
                                                         <ul className="ml-4 mt-1 space-y-1">
                                                             <li> Drag and drop sessions to new time slots in the calendar</li>
