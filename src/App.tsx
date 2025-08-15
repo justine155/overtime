@@ -2431,7 +2431,7 @@ function App() {
                                                     <p>TimePilot goes beyond simple to-do lists and basic calendars:</p>
                                                     <ul className="ml-4 space-y-1">
                                                         <li> <strong>Intelligent conflict avoidance:</strong> Never schedules study time over commitments</li>
-                                                        <li> <strong>Automatic redistribution:</strong> Handles missed sessions without manual rescheduling</li>
+                                                        <li> <strong>Flexible rescheduling:</strong> Drag and drop sessions to fit your changing schedule</li>
                                                         <li> <strong>Priority-based scheduling:</strong> Important and urgent tasks get scheduled first</li>
                                                         <li> <strong>Deadline awareness:</strong> Ensures tasks are completed before their deadlines</li>
                                                         <li> <strong>Adaptive learning:</strong> Improves estimates based on your actual completion patterns</li>
