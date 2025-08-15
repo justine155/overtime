@@ -1588,7 +1588,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
                     <div className="flex items-start space-x-3">
                       <span className="text-orange-600 dark:text-orange-400 font-bold mt-0.5">⚠</span>
                       <p className="text-gray-700 dark:text-gray-300">
-                        <strong>Restrictions:</strong> Completed, missed sessions, and commitments cannot be moved
+                        <strong>Restrictions:</strong> Completed sessions and commitments cannot be moved
                       </p>
                     </div>
                   </div>
