@@ -360,7 +360,7 @@ const InteractiveTutorial: React.FC<InteractiveTutorialProps> = ({
           </div>
           <div className="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
             <p className="text-red-700 dark:text-red-300 text-xs">
-              <strong>Note:</strong> If you see unscheduled hours after redistributing missed sessions, this indicates sessions that still need time allocation.
+              <strong>Note:</strong> If you see unscheduled hours after refreshing your study plan, this indicates sessions that still need time allocation.
             </p>
           </div>
         </div>
