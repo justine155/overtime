@@ -1720,39 +1720,6 @@ function App() {
         setDarkMode(prev => !prev);
     };
 
-    const handleSkipMissedSession = (planDate: string, sessionNumber: number, taskId: string) => {
-        setStudyPlans(prevPlans => {
-            const updatedPlans = prevPlans.map(plan => {
-                if (plan.date === planDate) {
-                    return {
-                        ...plan,
-                        plannedTasks: plan.plannedTasks.map(session => {
-                            if (session.taskId === taskId && session.sessionNumber === sessionNumber) {
-                                return {
-                                    ...session,
-                                    status: 'skipped' as const
-                                };
-                            }
-                            return session;
-                        })
-                    };
-                }
-                return plan;
-            });
-            
-            // After updating the plans, check if this creates the edge case
-            // where a task has only one session and that session is now skipped
-            setTimeout(() => {
-                const wasHandled = checkAndHandleSkippedOnlyTask(taskId, updatedPlans);
-                if (!wasHandled) {
-                    // If the task wasn't deleted, check if it should be completed
-                    checkAndCompleteTask(taskId, updatedPlans);
-                }
-            }, 0);
-            
-            return updatedPlans;
-        });
-    };
 
     // Interactive tutorial handlers
     const handleStartTutorial = () => {
