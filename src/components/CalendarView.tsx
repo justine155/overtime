@@ -1195,9 +1195,8 @@ const CalendarView: React.FC<CalendarViewProps> = ({
               const planDate = calendarEvent.resource.planDate || moment(calendarEvent.start).format('YYYY-MM-DD');
               const sessionStatus = checkSessionStatus(session as StudySession, planDate);
 
-              // Don't allow dragging of missed, completed, or done sessions
-              return sessionStatus !== 'missed' &&
-                     sessionStatus !== 'completed' &&
+              // Don't allow dragging of completed or done sessions
+              return sessionStatus !== 'completed' &&
                      !(session as StudySession).done;
             }
             return false;
