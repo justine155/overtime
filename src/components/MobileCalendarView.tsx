@@ -131,7 +131,17 @@ const MobileCalendarView: React.FC<MobileCalendarViewProps> = ({
     // --- Study Sessions ---
     const selectedPlan = studyPlans.find(plan => plan.date === selectedDateStr);
     if (selectedPlan) {
-      selectedPlan.plannedTasks.forEach(session => {
+      // Filter out past incomplete sessions (forward focus approach)
+      const today = moment().format('YYYY-MM-DD');
+      const relevantSessions = selectedPlan.plannedTasks.filter(session => {
+        // Always show sessions for today and future
+        if (selectedDateStr >= today) return true;
+
+        // For past dates, only show completed sessions
+        return session.done || session.status === 'completed' || session.status === 'skipped';
+      });
+
+      relevantSessions.forEach(session => {
         const task = tasks.find(t => t.id === session.taskId);
         if (task) {
           // Ensure correct parsing of startTime and endTime for the selectedDate
