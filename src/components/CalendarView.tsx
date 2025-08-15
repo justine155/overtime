@@ -201,8 +201,18 @@ const CalendarView: React.FC<CalendarViewProps> = ({
 
     // Convert study plans to calendar events
     studyPlans.forEach(plan => {
-      // Sort the planned tasks by chronological order first, then by priority
-      const sortedTasks = [...plan.plannedTasks].sort((a, b) => {
+      // Filter out past incomplete sessions (forward focus approach)
+      const today = getLocalDateString();
+      const relevantTasks = plan.plannedTasks.filter(session => {
+        // Always show sessions for today and future
+        if (plan.date >= today) return true;
+
+        // For past dates, only show completed sessions
+        return session.done || session.status === 'completed' || session.status === 'skipped';
+      });
+
+      // Sort the relevant tasks by chronological order first, then by priority
+      const sortedTasks = [...relevantTasks].sort((a, b) => {
         // Prioritize chronological order for manually rescheduled sessions
         // Check if either session has been manually rescheduled
         const aIsRescheduled = a.schedulingMetadata?.state === 'redistributed' || a.originalTime;
