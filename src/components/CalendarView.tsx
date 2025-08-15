@@ -948,11 +948,8 @@ const CalendarView: React.FC<CalendarViewProps> = ({
       const task = event.resource.data.task;
       categoryEmoji = getCategoryEmoji(task?.category);
 
-      // Add status indicators for missed sessions
+      // Check session status
       const sessionStatus = checkSessionStatus(event.resource.data, moment(event.start).format('YYYY-MM-DD'));
-      if (sessionStatus === 'missed') {
-        statusIndicator = '❌'; // Red X for missed
-      }
 
       // Debug logging for calendar event status
       console.log(`Calendar event "${event.title}" status: ${sessionStatus}, indicator: ${statusIndicator}`);
