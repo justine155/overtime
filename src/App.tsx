@@ -493,6 +493,33 @@ function App() {
     // Manual study plan generation handler
     const handleGenerateStudyPlan = async () => {
         if (tasks.length > 0) {
+            // Smart hour adjustment: Check if regenerating would create overwhelming schedules
+            const today = getLocalDateString();
+            const activeTasks = tasks.filter(task => task.status === 'pending' && task.estimatedHours > 0);
+            const totalRemainingHours = activeTasks.reduce((sum, task) => sum + task.estimatedHours, 0);
+
+            // Calculate available days until the earliest deadline
+            const earliestDeadline = activeTasks.reduce((earliest, task) => {
+                if (!task.deadline) return earliest;
+                const taskDeadline = new Date(task.deadline);
+                return !earliest || taskDeadline < earliest ? taskDeadline : earliest;
+            }, null as Date | null);
+
+            if (earliestDeadline) {
+                const daysUntilDeadline = Math.max(1, Math.ceil((earliestDeadline.getTime() - new Date(today).getTime()) / (1000 * 60 * 60 * 24)));
+                const requiredDailyHours = totalRemainingHours / daysUntilDeadline;
+                const maxReasonableDailyHours = settings.dailyAvailableHours * 1.2; // 20% tolerance
+
+                // If schedule would be overwhelming, show a gentle warning
+                if (requiredDailyHours > maxReasonableDailyHours) {
+                    const reductionNeeded = totalRemainingHours - (maxReasonableDailyHours * daysUntilDeadline);
+                    setNotificationMessage(
+                        `💡 Heads up: Your remaining ${totalRemainingHours.toFixed(1)} hours might be tight to fit in ${daysUntilDeadline} days (needs ${requiredDailyHours.toFixed(1)}h/day vs your ${settings.dailyAvailableHours}h limit). ` +
+                        `Consider reducing task hours by ~${reductionNeeded.toFixed(1)}h or extending deadlines for a more manageable schedule.`
+                    );
+                    setTimeout(() => setNotificationMessage(null), 8000);
+                }
+            }
             // Check if there are manually rescheduled sessions that will be affected
             const hasManualReschedules = studyPlans.some(plan =>
                 plan.plannedTasks.some(session =>
