@@ -593,21 +593,6 @@ function App() {
     };
 
 
-    // Handle study plan regeneration (redistribution functionality has been removed)
-    const handleRedistributeMissedSessions = () => {
-        if (tasks.length > 0) {
-            try {
-                // Simply regenerate the study plan
-                handleGenerateStudyPlan();
-                setNotificationMessage('Study plan regenerated successfully!');
-                setTimeout(() => setNotificationMessage(''), 5000);
-            } catch (error) {
-                console.error('Study plan regeneration failed:', error);
-                setNotificationMessage('Failed to regenerate study plan. Please try again.');
-                setTimeout(() => setNotificationMessage(''), 5000);
-            }
-        }
-    };
 
     // Handle refresh study plan with preserve option (no browser dialog)
     const handleRefreshStudyPlan = (preserveManualReschedules: boolean) => {
