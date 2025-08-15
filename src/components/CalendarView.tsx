@@ -203,27 +203,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
     studyPlans.forEach(plan => {
       // Sort the planned tasks by chronological order first, then by priority
       const sortedTasks = [...plan.plannedTasks].sort((a, b) => {
-        // Check session status for missed sessions
-        const aStatus = checkSessionStatus(a, plan.date);
-        const bStatus = checkSessionStatus(b, plan.date);
-        
-        // If one is missed and the other isn't, put missed sessions at the end
-        if (aStatus === 'missed' && bStatus !== 'missed') {
-          return 1; // a (missed) goes after b
-        }
-        if (aStatus !== 'missed' && bStatus === 'missed') {
-          return -1; // b (missed) goes after a
-        }
-        if (aStatus === 'missed' && bStatus === 'missed') {
-          // Both are missed, sort by current start time
-          const [aH, aM] = (a.startTime || '00:00').split(':').map(Number);
-          const [bH, bM] = (b.startTime || '00:00').split(':').map(Number);
-          const aMinutes = aH * 60 + aM;
-          const bMinutes = bH * 60 + bM;
-          return aMinutes - bMinutes;
-        }
-        
-        // Both are not missed, prioritize chronological order for manually rescheduled sessions
+        // Prioritize chronological order for manually rescheduled sessions
         // Check if either session has been manually rescheduled
         const aIsRescheduled = a.schedulingMetadata?.state === 'redistributed' || a.originalTime;
         const bIsRescheduled = b.schedulingMetadata?.state === 'redistributed' || b.originalTime;
