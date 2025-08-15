@@ -189,6 +189,11 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
 
   const activeTasks = tasks.filter(task => task.status === 'pending' && task.estimatedHours > 0);
 
+  // Dummy variables for missed sessions (feature removed - forward focus approach)
+  const missedSessions: any[] = [];
+  const overdueMissedSessions: any[] = [];
+  const showMissedSessions = false;
+
   // Handler for marking overdue tasks as completed
   const handleMarkTaskAsCompleted = (taskId: string) => {
     if (onUpdateTask) {
