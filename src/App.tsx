@@ -1437,7 +1437,6 @@ function App() {
         return false; // Task was not handled
     };
 
-    // Handler to mark a missed session as done
 
     // Handler to mark a session as done in studyPlans
     const handleMarkSessionDone = (planDate: string, sessionNumber: number) => {
