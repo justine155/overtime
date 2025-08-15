@@ -254,11 +254,6 @@ export const checkSessionStatus = (session: StudySession, planDate: string): 'sc
   return 'scheduled';
 };
 
-// Helper function to check if a session is a missed or redistributed session
-const isMissedOrRedistributedSession = (session: StudySession, planDate: string): boolean => {
-  const status = checkSessionStatus(session, planDate);
-  return status === 'missed' || session.isManualOverride === true || (!!session.originalTime && !!session.originalDate);
-};
 
 // Helper function to optimize session distribution by trying to create larger sessions
 const optimizeSessionDistribution = (task: Task, totalHours: number, daysForTask: string[], settings: UserSettings) => {
