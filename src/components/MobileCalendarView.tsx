@@ -497,7 +497,7 @@ const MobileCalendarView: React.FC<MobileCalendarViewProps> = ({
       }
     }, [isDragging]);
 
-    const canDrag = isStudySession && !isMissedSession;
+    const canDrag = isStudySession;
 
     return (
       <div
