@@ -12,11 +12,8 @@ interface StudyPlanViewProps {
   onUndoSessionDone: (planDate: string, taskId: string, sessionNumber: number) => void;
   settings: UserSettings; // Added settings prop
   onAddFixedCommitment?: (commitment: FixedCommitment) => void; // NEW PROP
-  onSkipMissedSession: (planDate: string, sessionNumber: number, taskId: string) => void;
-  onRedistributeMissedSessions?: () => void; // NEW PROP for redistribution
   onRefreshStudyPlan?: (preserveManualReschedules: boolean) => void; // NEW PROP for refresh with options
   onUpdateTask?: (taskId: string, updates: Partial<Task>) => void; // NEW PROP for task completion
-  onMarkMissedSessionDone?: (planDate: string, sessionNumber: number, taskId: string) => void; // NEW PROP for marking missed sessions as done
 }
 
 // Force warnings UI to be hidden for all users on first load unless they have a preference
