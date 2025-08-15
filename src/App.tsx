@@ -216,6 +216,9 @@ function App() {
                 setDarkMode(parsed);
             }
 
+            // Clean up localStorage keys from removed missed sessions feature
+            localStorage.removeItem('timepilot-showMissedSessions');
+
             setHasLoadedFromStorage(true);
         } catch (error) {
             console.error('Error loading data from localStorage:', error);
