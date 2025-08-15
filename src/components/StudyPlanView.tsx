@@ -52,16 +52,6 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
     localStorage.setItem('timepilot-showWarnings', newVal ? 'true' : 'false');
   };
 
-  // Persist showMissedSessions in localStorage
-  const [showMissedSessions, setShowMissedSessionsRaw] = useState(() => {
-    const saved = localStorage.getItem('timepilot-showMissedSessions');
-    return saved === null ? true : saved === 'true'; // Default to showing missed sessions
-  });
-  const setShowMissedSessions = (val: boolean | ((prev: boolean) => boolean)) => {
-    const newVal = typeof val === 'function' ? val(showMissedSessions) : val;
-    setShowMissedSessionsRaw(newVal);
-    localStorage.setItem('timepilot-showMissedSessions', newVal ? 'true' : 'false');
-  };
 
   // Hide the warning notification on mount (e.g., when switching tabs)
   useEffect(() => {
