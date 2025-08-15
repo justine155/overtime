@@ -809,16 +809,6 @@ const CalendarView: React.FC<CalendarViewProps> = ({
         backgroundColor = colorSettings.completedColor;
         opacity = 0.5;
       }
-      // If session is missed, make it red and strikethrough
-      else if (sessionStatus === 'missed') {
-        backgroundColor = colorSettings.missedColor;
-        opacity = 0.8;
-        textDecoration = 'line-through';
-        // Add a diagonal stripe pattern for missed sessions
-        backgroundImage = 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)';
-        backgroundSize = '8px 8px';
-        console.log(`Missed session "${event.title}" styled with red color and strikethrough`);
-      }
 
     } else if (event.resource.type === 'commitment') {
       const commitment = event.resource.data as FixedCommitment;
