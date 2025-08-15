@@ -197,17 +197,6 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
     }
   };
 
-  // Handler for marking individual missed sessions as done
-  const handleMarkMissedSessionDone = (planDate: string, sessionNumber: number, taskId: string) => {
-    if (onMarkMissedSessionDone) {
-      onMarkMissedSessionDone(planDate, sessionNumber, taskId);
-      const task = getTaskById(taskId);
-      setNotificationMessage(`Session for "${task?.title || 'Unknown Task'}" marked as completed`);
-    } else {
-      setNotificationMessage('Session marking functionality not available');
-    }
-    setTimeout(() => setNotificationMessage(null), 3000);
-  };
 
   // Function to check if there are manual reschedules
   const checkForManualReschedules = () => {
