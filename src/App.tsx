@@ -2121,11 +2121,8 @@ function App() {
                             onUndoSessionDone={handleUndoSessionDone}
                             settings={settings}
                             onAddFixedCommitment={handleAddFixedCommitment}
-                            onSkipMissedSession={handleSkipMissedSession}
-                            onRedistributeMissedSessions={handleRedistributeMissedSessions}
                             onRefreshStudyPlan={handleRefreshStudyPlan}
                             onUpdateTask={handleUpdateTask}
-                            onMarkMissedSessionDone={handleMarkMissedSessionDone}
                         />
                     )}
 
