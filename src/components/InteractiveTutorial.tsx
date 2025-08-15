@@ -512,34 +512,6 @@ const InteractiveTutorial: React.FC<InteractiveTutorialProps> = ({
       )
     },
 
-    // Missed Sessions & Redistribution
-    {
-      id: 'missed-sessions-explanation',
-      title: 'Handling Missed Sessions',
-      description: 'Life happens! Here\'s how TimePilot helps you recover when you miss study sessions.',
-      position: 'center',
-      action: 'observe',
-      requiresAction: false,
-      customContent: (
-        <div className="space-y-3 text-sm">
-          <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
-            <p className="font-semibold text-red-800 dark:text-red-200 mb-2">🔄 When Sessions Are Missed:</p>
-            <ul className="text-red-700 dark:text-red-300 space-y-1 text-xs">
-              <li>• TimePilot automatically detects missed sessions</li>
-              <li>• Shows redistribution options in the suggestions panel</li>
-              <li>• Offers both Enhanced and Legacy redistribution modes</li>
-              <li>• Reschedules missed work around your existing commitments</li>
-            </ul>
-          </div>
-          <div className="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
-            <p className="font-semibold text-blue-800 dark:text-blue-200 mb-1">💡 <strong>Pro Tip:</strong></p>
-            <p className="text-blue-700 dark:text-blue-300 text-xs">
-              Use Enhanced mode first - it's smarter about finding optimal time slots. Fall back to Legacy mode if needed.
-            </p>
-          </div>
-        </div>
-      )
-    },
 
     // Timer and Session Management
     {
