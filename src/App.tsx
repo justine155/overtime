@@ -2262,6 +2262,12 @@ function App() {
                         />
                     )}
 
+                    {/* Celebration Confetti */}
+                    <Confetti
+                        show={showConfetti}
+                        onComplete={() => setShowConfetti(false)}
+                    />
+
                     {activeTab === 'tasks' && (
                         <div className="space-y-4 sm:space-y-6">
                             <button
