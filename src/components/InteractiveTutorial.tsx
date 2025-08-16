@@ -105,10 +105,10 @@ const InteractiveTutorial: React.FC<InteractiveTutorialProps> = ({
       )
     },
 
-    // Core Concepts Explanation
+    // Advanced Calendar Features
     {
-      id: 'core-concepts',
-      title: 'Understanding: Tasks vs Commitments',
+      id: 'calendar-drag-drop',
+      title: 'Master Calendar Drag & Drop 📅',
       description: 'Before we start, let\'s clarify the difference between these two core concepts in TimePilot.',
       position: 'center',
       action: 'observe',
