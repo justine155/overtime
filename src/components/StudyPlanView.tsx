@@ -10,6 +10,7 @@ interface StudyPlanViewProps {
   onSelectTask: (task: Task, session?: { allocatedHours: number; planDate?: string; sessionNumber?: number }) => void;
   onGenerateStudyPlan: () => void;
   onUndoSessionDone: (planDate: string, taskId: string, sessionNumber: number) => void;
+  onSkipSession: (planDate: string, taskId: string, sessionNumber: number) => void; // NEW PROP for skipping sessions
   settings: UserSettings; // Added settings prop
   onAddFixedCommitment?: (commitment: FixedCommitment) => void; // NEW PROP
   onRefreshStudyPlan?: (preserveManualReschedules: boolean) => void; // NEW PROP for refresh with options
