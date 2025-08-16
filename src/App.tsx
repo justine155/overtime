@@ -1864,10 +1864,32 @@ function App() {
 
     const handleStartGuided = () => {
         setShowOnboarding(false);
-        setShowTaskInput(true);
+        setShowGuidedInput(true);
+    };
+
+    const handleGuidedTaskComplete = (taskData: Omit<Task, 'id' | 'createdAt'>) => {
+        // Add the task
+        const newTask: Task = {
+            ...taskData,
+            id: Date.now().toString(),
+            createdAt: new Date().toISOString()
+        };
+
+        setTasks([newTask]);
+        setShowGuidedInput(false);
         localStorage.setItem('timepilot-onboarding-completed', 'true');
-        setNotificationMessage('Let\'s create your first task! Fill in the details below.');
-        setTimeout(() => setNotificationMessage(null), 4000);
+
+        // Generate study plan with the new task
+        const { plans } = generateNewStudyPlan([newTask], settings, fixedCommitments);
+        setStudyPlans(plans);
+
+        setNotificationMessage('🎉 Great job! Your first task is scheduled. TimePilot found the perfect study times for you!');
+        setTimeout(() => setNotificationMessage(null), 5000);
+    };
+
+    const handleBackToWelcome = () => {
+        setShowGuidedInput(false);
+        setShowOnboarding(true);
     };
 
     const handleSkipOnboarding = () => {
