@@ -134,6 +134,10 @@ function App() {
     // Dark mode state
     const [darkMode, setDarkMode] = useState(false);
 
+    // Onboarding state
+    const [showOnboarding, setShowOnboarding] = useState(false);
+    const [isFirstTimeUser, setIsFirstTimeUser] = useState(false);
+
     // Load data from localStorage after component mounts
     useEffect(() => {
         try {
