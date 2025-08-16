@@ -1785,6 +1785,96 @@ function App() {
         setTimeout(() => setNotificationMessage(null), 3000);
     };
 
+    // Onboarding handlers
+    const handleCreateSampleSchedule = () => {
+        // Create sample tasks and commitments
+        const sampleTasks: Task[] = [
+            {
+                id: 'sample-1',
+                title: 'Study for Math Exam',
+                estimatedHours: 8,
+                deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week from now
+                importance: true,
+                category: 'Mathematics',
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'sample-2',
+                title: 'Complete History Assignment',
+                estimatedHours: 4,
+                deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days from now
+                importance: false,
+                category: 'History',
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'sample-3',
+                title: 'Prepare Chemistry Lab Report',
+                estimatedHours: 3,
+                deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days from now
+                importance: false,
+                category: 'Chemistry',
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        const sampleCommitments: FixedCommitment[] = [
+            {
+                id: 'sample-commit-1',
+                title: 'Math Class',
+                startTime: '10:00',
+                endTime: '11:30',
+                daysOfWeek: [1, 3, 5], // Mon, Wed, Fri
+                category: 'Academic',
+                location: 'Room 101',
+                recurring: true,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'sample-commit-2',
+                title: 'Part-time Job',
+                startTime: '14:00',
+                endTime: '18:00',
+                daysOfWeek: [2, 4], // Tue, Thu
+                category: 'Work',
+                location: 'Office',
+                recurring: true,
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        setTasks(sampleTasks);
+        setFixedCommitments(sampleCommitments);
+
+        // Generate initial study plan
+        const { plans } = generateNewStudyPlan(sampleTasks, settings, sampleCommitments);
+        setStudyPlans(plans);
+
+        // Complete onboarding
+        setShowOnboarding(false);
+        localStorage.setItem('timepilot-onboarding-completed', 'true');
+        setNotificationMessage('🎉 Welcome to TimePilot! Your sample schedule is ready. Try the timer and explore features!');
+        setTimeout(() => setNotificationMessage(null), 5000);
+    };
+
+    const handleStartGuided = () => {
+        setShowOnboarding(false);
+        setShowTaskInput(true);
+        localStorage.setItem('timepilot-onboarding-completed', 'true');
+        setNotificationMessage('Let\'s create your first task! Fill in the details below.');
+        setTimeout(() => setNotificationMessage(null), 4000);
+    };
+
+    const handleSkipOnboarding = () => {
+        setShowOnboarding(false);
+        localStorage.setItem('timepilot-onboarding-completed', 'true');
+        setNotificationMessage('Welcome to TimePilot! Add your first task to get started.');
+        setTimeout(() => setNotificationMessage(null), 3000);
+    };
+
     const handleInteractiveTutorialSkip = () => {
         setShowInteractiveTutorial(false);
         // Mark tutorial as completed when dismissed so the button and welcome message don't appear again
