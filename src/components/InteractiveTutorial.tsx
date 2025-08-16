@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, ArrowLeft, CheckCircle, Info, Clock, Calendar, Settings, BookOpen, Users, AlertTriangle, Target, Lightbulb, TrendingUp, Zap, Maximize2, Minimize2 } from 'lucide-react';
+import { advancedTutorialSteps } from './AdvancedTutorialSteps';
 
 interface TutorialStep {
   id: string;
