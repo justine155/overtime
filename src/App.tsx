@@ -34,6 +34,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import TimePilotIcon from './components/TimePilotIcon';
 import WelcomeOnboarding from './components/WelcomeOnboarding';
 import GuidedTaskInput from './components/GuidedTaskInput';
+import Confetti from './components/Confetti';
 import './utils/test-data-setup'; // Import test data setup for testing
 import { assessAddTaskFeasibility } from './utils/task-feasibility';
 
