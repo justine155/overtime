@@ -1860,6 +1860,7 @@ function App() {
         // Complete onboarding
         setShowOnboarding(false);
         localStorage.setItem('timepilot-onboarding-completed', 'true');
+        setShowConfetti(true);
         setNotificationMessage('🎉 Welcome to TimePilot! Your sample schedule is ready. Try the timer and explore features!');
         setTimeout(() => setNotificationMessage(null), 5000);
     };
