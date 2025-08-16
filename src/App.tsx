@@ -2864,6 +2864,7 @@ function App() {
                     hasCompletedTutorial={localStorage.getItem('timepilot-interactive-tutorial-complete') === 'true'}
                     hasTasks={tasks.length > 0}
                     isTutorialActive={showInteractiveTutorial}
+                    hasCompletedOnboarding={localStorage.getItem('timepilot-onboarding-completed') === 'true'}
                 />
 
                 {/* Gamification Panel */}
