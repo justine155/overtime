@@ -2351,6 +2351,7 @@ function App() {
                             onSelectTask={handleSelectTask}
                             onGenerateStudyPlan={handleGenerateStudyPlan}
                             onUndoSessionDone={handleUndoSessionDone}
+                            onSkipSession={handleSkipSession}
                             settings={settings}
                             onAddFixedCommitment={handleAddFixedCommitment}
                             onRefreshStudyPlan={handleRefreshStudyPlan}
