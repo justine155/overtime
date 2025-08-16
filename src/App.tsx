@@ -224,6 +224,15 @@ function App() {
             // Clean up localStorage keys from removed missed sessions feature
             localStorage.removeItem('timepilot-showMissedSessions');
 
+            // Check if this is a first-time user (no onboarding completion flag)
+            const hasCompletedOnboarding = localStorage.getItem('timepilot-onboarding-completed');
+            const hasAnyData = savedTasks || savedStudyPlans || savedCommitments;
+
+            if (!hasCompletedOnboarding && !hasAnyData) {
+                setIsFirstTimeUser(true);
+                setShowOnboarding(true);
+            }
+
             setHasLoadedFromStorage(true);
         } catch (error) {
             console.error('Error loading data from localStorage:', error);
