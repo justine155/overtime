@@ -140,6 +140,7 @@ function App() {
     const [showOnboarding, setShowOnboarding] = useState(false);
     const [showGuidedInput, setShowGuidedInput] = useState(false);
     const [isFirstTimeUser, setIsFirstTimeUser] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
 
     // Load data from localStorage after component mounts
     useEffect(() => {
