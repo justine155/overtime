@@ -1886,6 +1886,7 @@ function App() {
         const { plans } = generateNewStudyPlan([newTask], settings, fixedCommitments);
         setStudyPlans(plans);
 
+        setShowConfetti(true);
         setNotificationMessage('🎉 Great job! Your first task is scheduled. TimePilot found the perfect study times for you!');
         setTimeout(() => setNotificationMessage(null), 5000);
     };
