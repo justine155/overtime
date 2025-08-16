@@ -744,8 +744,8 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
                 {/* Undo button for completed sessions */}
                 {(isDone || isCompleted) && (
                   <button
-                    onClick={e => { 
-                      e.stopPropagation(); 
+                    onClick={e => {
+                      e.stopPropagation();
                       if (todaysPlan) {
                         onUndoSessionDone(todaysPlan.date, session.taskId, session.sessionNumber || 0);
                       }
@@ -754,6 +754,22 @@ const StudyPlanView: React.FC<StudyPlanViewProps> = ({ studyPlans, tasks, fixedC
                     title="Undo completion"
                   >
                     Undo
+                  </button>
+                )}
+
+                {/* Skip button for active sessions */}
+                {!isDone && !isCompleted && sessionStatus !== 'missed' && (
+                  <button
+                    onClick={e => {
+                      e.stopPropagation();
+                      if (todaysPlan) {
+                        onSkipSession(todaysPlan.date, session.taskId, session.sessionNumber || 0);
+                      }
+                    }}
+                    className="ml-4 px-3 py-1 text-xs bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 transition-colors duration-200 dark:bg-yellow-900 dark:text-yellow-300 dark:hover:bg-yellow-800"
+                    title="Skip this session"
+                  >
+                    Skip
                   </button>
                 )}
               </div>
