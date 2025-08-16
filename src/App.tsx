@@ -2250,6 +2250,13 @@ function App() {
                             settings={settings}
                         />
                     )}
+                    {showGuidedInput && (
+                        <GuidedTaskInput
+                            onAddTask={handleGuidedTaskComplete}
+                            onBack={handleBackToWelcome}
+                            settings={settings}
+                        />
+                    )}
 
                     {activeTab === 'tasks' && (
                         <div className="space-y-4 sm:space-y-6">
