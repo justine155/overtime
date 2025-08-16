@@ -1603,6 +1603,59 @@ function App() {
         });
     };
 
+    // Handler to skip a session
+    const handleSkipSession = (planDate: string, taskId: string, sessionNumber: number) => {
+        setStudyPlans(prevPlans => {
+            const updatedPlans = prevPlans.map(plan => {
+                if (plan.date !== planDate) return plan;
+                return {
+                    ...plan,
+                    plannedTasks: plan.plannedTasks.map(session => {
+                        // Only skip the session if it matches both taskId and sessionNumber
+                        if (session.taskId === taskId && session.sessionNumber === sessionNumber) {
+                            return { ...session, status: 'skipped' };
+                        }
+                        return session;
+                    })
+                };
+            });
+
+            // Check if skipping this session completes the task or handles edge cases
+            setTimeout(() => {
+                const wasHandled = checkAndHandleSkippedOnlyTask(taskId, updatedPlans);
+                if (!wasHandled) {
+                    // Check if all sessions are now done (including skipped sessions)
+                    const allSessionsForTask = updatedPlans.flatMap(plan => plan.plannedTasks).filter(s => s.taskId === taskId);
+                    const allSessionsDone = allSessionsForTask.length > 0 && allSessionsForTask.every(session =>
+                        session.done || session.status === 'skipped'
+                    );
+
+                    if (allSessionsDone) {
+                        // Mark task as completed
+                        const task = tasks.find(t => t.id === taskId);
+                        if (task && task.status !== 'completed') {
+                            const updatedTasks = tasks.map(t =>
+                                t.id === taskId
+                                    ? { ...t, status: 'completed' as const }
+                                    : t
+                            );
+                            setTasks(updatedTasks);
+
+                            // Show completion notification
+                            setNotificationMessage(`Task "${task.title}" completed - all sessions done`);
+                            setTimeout(() => setNotificationMessage(null), 3000);
+                        }
+                    }
+                }
+            }, 0);
+
+            return updatedPlans;
+        });
+
+        setNotificationMessage('Session skipped');
+        setTimeout(() => setNotificationMessage(null), 3000);
+    };
+
     // Completion flow handlers
     const handleContinueWithNextSession = () => {
         // Find the next available session for today
