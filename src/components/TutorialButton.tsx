@@ -6,6 +6,7 @@ interface TutorialButtonProps {
   hasCompletedTutorial: boolean;
   hasTasks: boolean;
   isTutorialActive?: boolean; // New prop to control visibility
+  hasCompletedOnboarding?: boolean; // New prop to check onboarding status
 }
 
 const TutorialButton: React.FC<TutorialButtonProps> = ({ 
@@ -36,4 +37,4 @@ const TutorialButton: React.FC<TutorialButtonProps> = ({
   );
 };
 
-export default TutorialButton; 
+export default TutorialButton;
