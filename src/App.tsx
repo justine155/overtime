@@ -2207,7 +2207,7 @@ function App() {
                             )}
                         </div>
                     )}
-                    {activeTab === 'dashboard' && (
+                    {activeTab === 'dashboard' && !showOnboarding && (
                         <Dashboard
                             tasks={tasks}
                             studyPlans={studyPlans}
@@ -2216,6 +2216,14 @@ function App() {
                             onSelectTask={handleSelectTask}
                             onGenerateStudyPlan={handleGenerateStudyPlan}
                             hasCompletedTutorial={localStorage.getItem('timepilot-interactive-tutorial-complete') === 'true'}
+                        />
+                    )}
+                    {showOnboarding && (
+                        <WelcomeOnboarding
+                            onCreateSampleSchedule={handleCreateSampleSchedule}
+                            onStartGuided={handleStartGuided}
+                            onSkipOnboarding={handleSkipOnboarding}
+                            settings={settings}
                         />
                     )}
 
@@ -2740,7 +2748,7 @@ function App() {
                                             {[
                                                 { amount: '50', emoji: '☕', desc: 'Coffee' },
                                                 { amount: '100', emoji: '🍕', desc: 'Pizza' },
-                                                { amount: '200', emoji: '🎉', desc: 'Party' }
+                                                { amount: '200', emoji: '����', desc: 'Party' }
                                             ].map((item, index) => (
                                                 <div
                                                     key={index}
