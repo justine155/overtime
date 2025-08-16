@@ -32,6 +32,7 @@ import InteractiveTutorial from './components/InteractiveTutorial';
 import TutorialButton from './components/TutorialButton';
 import ErrorBoundary from './components/ErrorBoundary';
 import TimePilotIcon from './components/TimePilotIcon';
+import WelcomeOnboarding from './components/WelcomeOnboarding';
 import './utils/test-data-setup'; // Import test data setup for testing
 import { assessAddTaskFeasibility } from './utils/task-feasibility';
 
